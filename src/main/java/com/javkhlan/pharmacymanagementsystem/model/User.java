@@ -1,6 +1,6 @@
 package com.javkhlan.pharmacymanagementsystem.model;
 
-public class UserModel {
+public class User {
 	private int id;
 	private String staffId;
 	private String role;
@@ -12,7 +12,7 @@ public class UserModel {
 	private String username;
 	private String password;
 
-	public UserModel(int id, String staffId, String role, String firstName, String lastName, String address,
+	public User(int id, String staffId, String role, String firstName, String lastName, String address,
 			String phone, String email, String username, String password) {
 		this.id = id;
 		this.staffId = staffId;
@@ -26,7 +26,7 @@ public class UserModel {
 		this.password = password;
 	}
 
-	public UserModel(String staffId, String role, String firstName, String lastName, String address, String phone,
+	public User(String staffId, String role, String firstName, String lastName, String address, String phone,
 			String email, String username, String password) {
 		this.staffId = staffId;
 		this.role = role;

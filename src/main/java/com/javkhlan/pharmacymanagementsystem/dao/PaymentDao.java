@@ -1,9 +1,9 @@
 package com.javkhlan.pharmacymanagementsystem.dao;
 
-import com.javkhlan.pharmacymanagementsystem.model.PaymentModel;
+import com.javkhlan.pharmacymanagementsystem.model.Payment;
 
 public interface PaymentDao {
 
-	public void insertPayment(PaymentModel payment);
+	public void insertPayment(Payment payment);
 
 }

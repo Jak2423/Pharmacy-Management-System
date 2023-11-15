@@ -4,20 +4,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.javkhlan.pharmacymanagementsystem.model.CompanyModel;
+import com.javkhlan.pharmacymanagementsystem.model.Company;
 import com.javkhlan.pharmacymanagementsystem.util.DBConnection;
 
 public class CompanyDaoImpl implements CompanyDao {
 	@Override
-	public ArrayList<CompanyModel> getCompanies() {
-		ArrayList<CompanyModel> companyList = new ArrayList<>();
+	public ArrayList<Company> getCompanies() {
+		ArrayList<Company> companyList = new ArrayList<>();
 
 		ResultSet res = null;
 		try {
 			res = DBConnection.getInstance().dbExecuteQuery("select * from " + "Companies");
 
 			while (res.next()) {
-				CompanyModel company = new CompanyModel(res.getString("id"), res.getString("name"));
+				Company company = new Company(res.getString("id"), res.getString("name"));
 				companyList.add(company);
 			}
 

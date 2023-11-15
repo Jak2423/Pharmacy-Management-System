@@ -15,7 +15,7 @@ import javax.swing.table.TableCellRenderer;
 
 import com.javkhlan.pharmacymanagementsystem.dao.UserDao;
 import com.javkhlan.pharmacymanagementsystem.dao.UserDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.UserModel;
+import com.javkhlan.pharmacymanagementsystem.model.User;
 import com.javkhlan.pharmacymanagementsystem.util.Constants;
 import com.javkhlan.pharmacymanagementsystem.util.Observer;
 
@@ -23,7 +23,7 @@ public class ViewUsersPanel extends JScrollPane implements Observer {
 
 	private static final long serialVersionUID = 7291289594458417600L;
 
-	private ArrayList<UserModel> userList;
+	private ArrayList<User> userList;
 	private DefaultTableModel tableModel;
 	private JTable userTable;
 	private String role;
@@ -32,7 +32,7 @@ public class ViewUsersPanel extends JScrollPane implements Observer {
 	public ViewUsersPanel(String role) {
 		this.userDao = new UserDaoImpl();
 		this.role = role;
-		this.userList = new ArrayList<UserModel>();
+		this.userList = new ArrayList<User>();
 
 		tableModel = new DefaultTableModel();
 		tableModel.addColumn("ID");
@@ -55,7 +55,7 @@ public class ViewUsersPanel extends JScrollPane implements Observer {
 
 	public void setTable() {
 		tableModel.setRowCount(0);
-		for (UserModel user : this.userList) {
+		for (User user : this.userList) {
 			JButton editBtn = new JButton("Edit");
 			editBtn.setOpaque(true);
 			editBtn.setBackground(Constants.blueColor);
@@ -79,7 +79,7 @@ public class ViewUsersPanel extends JScrollPane implements Observer {
 							"Warning", dialogButton);
 
 					if (dialogResult == JOptionPane.YES_OPTION) {
-						UserModel item = userList.get(userTable.getSelectedRow());
+						User item = userList.get(userTable.getSelectedRow());
 						userDao.deleteUser(item.getId());
 						tableModel.setRowCount(0);
 						getDataToTable();

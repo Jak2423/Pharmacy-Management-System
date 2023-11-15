@@ -27,8 +27,8 @@ import com.javkhlan.pharmacymanagementsystem.dao.CompanyDao;
 import com.javkhlan.pharmacymanagementsystem.dao.CompanyDaoImpl;
 import com.javkhlan.pharmacymanagementsystem.dao.StockDao;
 import com.javkhlan.pharmacymanagementsystem.dao.StockDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.CompanyModel;
-import com.javkhlan.pharmacymanagementsystem.model.StockModel;
+import com.javkhlan.pharmacymanagementsystem.model.Company;
+import com.javkhlan.pharmacymanagementsystem.model.Stock;
 import com.javkhlan.pharmacymanagementsystem.util.Constants;
 import com.javkhlan.pharmacymanagementsystem.util.Observer;
 
@@ -42,7 +42,7 @@ public class AddStockPanel extends JPanel implements Observer, ActionListener {
 	private JComboBox<String> comboBox;
 	private StockDao stockDao;
 	private CompanyDao companyDao;
-	private ArrayList<CompanyModel> companyList;
+	private ArrayList<Company> companyList;
 	private ArrayList<String> companyNames;
 
 	public AddStockPanel() {
@@ -213,7 +213,7 @@ public class AddStockPanel extends JPanel implements Observer, ActionListener {
 		this.companyList = companyDao.getCompanies();
 
 		companyNames = new ArrayList<>();
-		for (CompanyModel company : companyList) {
+		for (Company company : companyList) {
 			companyNames.add(company.getName());
 		}
 	}
@@ -243,7 +243,7 @@ public class AddStockPanel extends JPanel implements Observer, ActionListener {
 				JOptionPane.showMessageDialog(null, "Please provide inputs for all field", "Missing fields",
 						JOptionPane.WARNING_MESSAGE);
 			} else {
-				StockModel newStock = new StockModel(drugName, categ, desc, company, supplier,
+				Stock newStock = new Stock(drugName, categ, desc, company, supplier,
 						Integer.parseInt(quanField.getText()), Double.parseDouble(costFeild.getText()));
 				stockDao.insertStock(newStock);
 				clearFields();

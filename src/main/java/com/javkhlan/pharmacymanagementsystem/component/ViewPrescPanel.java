@@ -15,7 +15,7 @@ import javax.swing.table.TableCellRenderer;
 
 import com.javkhlan.pharmacymanagementsystem.dao.PrescDao;
 import com.javkhlan.pharmacymanagementsystem.dao.PrescDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.PrescriptionModel;
+import com.javkhlan.pharmacymanagementsystem.model.Prescription;
 import com.javkhlan.pharmacymanagementsystem.util.Constants;
 import com.javkhlan.pharmacymanagementsystem.util.Observer;
 
@@ -23,14 +23,14 @@ public class ViewPrescPanel extends JScrollPane implements Observer {
 
 	private static final long serialVersionUID = 2375418368290428012L;
 
-	private ArrayList<PrescriptionModel> prescList;
+	private ArrayList<Prescription> prescList;
 	private DefaultTableModel tableModel;
 	private JTable prescTable;
 	private PrescDao prescDao;
 
 	public ViewPrescPanel() {
 		this.prescDao = new PrescDaoImpl();
-		this.prescList = new ArrayList<PrescriptionModel>();
+		this.prescList = new ArrayList<Prescription>();
 
 		this.tableModel = new DefaultTableModel();
 		tableModel.addColumn("Customer");
@@ -48,7 +48,7 @@ public class ViewPrescPanel extends JScrollPane implements Observer {
 
 	public void setTable() {
 		tableModel.setRowCount(0);
-		for (PrescriptionModel presc : this.prescList) {
+		for (Prescription presc : this.prescList) {
 			JButton deleteBtn = new JButton("Delete");
 			deleteBtn.setOpaque(true);
 			deleteBtn.setBackground(Constants.redColor);
@@ -60,7 +60,7 @@ public class ViewPrescPanel extends JScrollPane implements Observer {
 							"Are you sure you want to delete this prescription?", "Warning", dialogButton);
 
 					if (dialogResult == JOptionPane.YES_OPTION) {
-						PrescriptionModel item = prescList.get(prescTable.getSelectedRow());
+						Prescription item = prescList.get(prescTable.getSelectedRow());
 						prescDao.deletePrescription(item.getPresNo());
 						tableModel.setRowCount(0);
 						getDataToTable();

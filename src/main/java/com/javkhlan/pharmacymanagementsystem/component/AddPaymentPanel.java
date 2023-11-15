@@ -21,7 +21,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.javkhlan.pharmacymanagementsystem.dao.PaymentDao;
 import com.javkhlan.pharmacymanagementsystem.dao.PaymentDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.PaymentModel;
+import com.javkhlan.pharmacymanagementsystem.model.Payment;
 import com.javkhlan.pharmacymanagementsystem.util.Constants;
 import com.javkhlan.pharmacymanagementsystem.util.Observer;
 
@@ -124,7 +124,7 @@ public class AddPaymentPanel extends JPanel implements Observer, ActionListener 
 				JOptionPane.showMessageDialog(null, "Please provide inputs for all field", "Missing fields",
 						JOptionPane.WARNING_MESSAGE);
 			} else {
-				PaymentModel newPayment = new PaymentModel(invoiceField.getText(),
+				Payment newPayment = new Payment(invoiceField.getText(),
 						Double.parseDouble(amountField.getText()), paymentField.getText(), serialField.getText());
 				paymentDao.insertPayment(newPayment);
 				clearFields();

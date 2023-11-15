@@ -2,7 +2,7 @@ package com.javkhlan.pharmacymanagementsystem.model;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class PrescriptionModel {
+public class Prescription {
 	private static final AtomicInteger invoiceCount = new AtomicInteger(1000);
 	private int presNo;
 	private String invoiceNo;
@@ -18,7 +18,7 @@ public class PrescriptionModel {
 	private String dose;
 	private int quantity;
 
-	public PrescriptionModel(int presNo, String invoiceNo, String customerID, String customerName, int age,
+	public Prescription(int presNo, String invoiceNo, String customerID, String customerName, int age,
 			String gender, String address, String date, String drug, String phone, String strength, String dose,
 			int quantity) {
 		this.presNo = presNo;
@@ -36,7 +36,7 @@ public class PrescriptionModel {
 		this.quantity = quantity;
 	}
 
-	public PrescriptionModel(String customerID, String customerName, int age, String gender, String address,
+	public Prescription(String customerID, String customerName, int age, String gender, String address,
 			String drug, String phone, String strength, String dose, int quantity) {
 		this.invoiceNo = "i" + invoiceCount.incrementAndGet();
 		this.customerID = customerID;

@@ -15,20 +15,20 @@ import javax.swing.table.TableCellRenderer;
 
 import com.javkhlan.pharmacymanagementsystem.dao.StockDao;
 import com.javkhlan.pharmacymanagementsystem.dao.StockDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.StockModel;
+import com.javkhlan.pharmacymanagementsystem.model.Stock;
 import com.javkhlan.pharmacymanagementsystem.util.Constants;
 import com.javkhlan.pharmacymanagementsystem.util.Observer;
 
 public class PurchasePanel extends JScrollPane implements Observer {
 	private static final long serialVersionUID = -9084533462784097783L;
-	private ArrayList<StockModel> stockList;
+	private ArrayList<Stock> stockList;
 	private DefaultTableModel tableModel;
 	private JTable stockTable;
 	private StockDao stockDao;
 
 	public PurchasePanel() {
 		stockDao = new StockDaoImpl();
-		this.stockList = new ArrayList<StockModel>();
+		this.stockList = new ArrayList<Stock>();
 
 		tableModel = new DefaultTableModel();
 		tableModel.addColumn("ID");
@@ -52,7 +52,7 @@ public class PurchasePanel extends JScrollPane implements Observer {
 
 	public void setTable() {
 		tableModel.setRowCount(0);
-		for (StockModel stock : this.stockList) {
+		for (Stock stock : this.stockList) {
 			JButton deleteBtn = new JButton("Buy");
 			deleteBtn.setOpaque(true);
 			deleteBtn.setBackground(Constants.primaryColor);
@@ -65,7 +65,7 @@ public class PurchasePanel extends JScrollPane implements Observer {
 								"Are you sure you want to buy this medicine?", "Warning", dialogButton);
 
 						if (dialogResult == JOptionPane.YES_OPTION) {
-							StockModel item = stockList.get(stockTable.getSelectedRow());
+							Stock item = stockList.get(stockTable.getSelectedRow());
 							stockDao.purchaseFromStock(item.getId());
 							getDataToTable();
 						}

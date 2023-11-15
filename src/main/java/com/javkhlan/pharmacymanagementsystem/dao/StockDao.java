@@ -2,19 +2,19 @@ package com.javkhlan.pharmacymanagementsystem.dao;
 
 import java.util.ArrayList;
 
-import com.javkhlan.pharmacymanagementsystem.model.StockModel;
+import com.javkhlan.pharmacymanagementsystem.model.Stock;
 
 public interface StockDao {
 
-	public ArrayList<StockModel> getStocks();
+	public ArrayList<Stock> getStocks();
 
-	public ArrayList<StockModel> getMinCostStock();
+	public ArrayList<Stock> getMinCostStock();
 
-	public ArrayList<StockModel> getMaxCostStock();
+	public ArrayList<Stock> getMaxCostStock();
 
-	public ArrayList<StockModel> getStockByName(String name);
+	public ArrayList<Stock> getStockByName(String name);
 
-	public void insertStock(StockModel stock);
+	public void insertStock(Stock stock);
 
 	public void deleteStock(int id);
 

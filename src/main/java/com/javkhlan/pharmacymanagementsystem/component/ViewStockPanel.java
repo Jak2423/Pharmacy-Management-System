@@ -15,21 +15,21 @@ import javax.swing.table.TableCellRenderer;
 
 import com.javkhlan.pharmacymanagementsystem.dao.StockDao;
 import com.javkhlan.pharmacymanagementsystem.dao.StockDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.StockModel;
+import com.javkhlan.pharmacymanagementsystem.model.Stock;
 import com.javkhlan.pharmacymanagementsystem.util.Constants;
 import com.javkhlan.pharmacymanagementsystem.util.Observer;
 
 public class ViewStockPanel extends JScrollPane implements Observer {
 	private static final long serialVersionUID = -3341869234675803955L;
 
-	private ArrayList<StockModel> stockList;
+	private ArrayList<Stock> stockList;
 	private DefaultTableModel tableModel;
 	private JTable stockTable;
 	private StockDao stockDao;
 
 	public ViewStockPanel() {
 		stockDao = new StockDaoImpl();
-		this.stockList = new ArrayList<StockModel>();
+		this.stockList = new ArrayList<Stock>();
 
 		tableModel = new DefaultTableModel();
 		tableModel.addColumn("ID");
@@ -53,7 +53,7 @@ public class ViewStockPanel extends JScrollPane implements Observer {
 
 	public void setTable() {
 		tableModel.setRowCount(0);
-		for (StockModel stock : this.stockList) {
+		for (Stock stock : this.stockList) {
 			JButton deleteBtn = new JButton("Delete");
 			deleteBtn.setOpaque(true);
 			deleteBtn.setBackground(Constants.redColor);
@@ -65,7 +65,7 @@ public class ViewStockPanel extends JScrollPane implements Observer {
 							"Warning", dialogButton);
 
 					if (dialogResult == JOptionPane.YES_OPTION) {
-						StockModel item = stockList.get(stockTable.getSelectedRow());
+						Stock item = stockList.get(stockTable.getSelectedRow());
 						stockDao.deleteStock(item.getId());
 						getDataToTable();
 					}
@@ -94,10 +94,10 @@ public class ViewStockPanel extends JScrollPane implements Observer {
 		setViewportView(stockTable);
 	}
 
-	public void refresh(ArrayList<StockModel> stockList) {
+	public void refresh(ArrayList<Stock> stockList) {
 		this.stockList = stockList;
 		tableModel.setRowCount(0);
-		for (StockModel stock : this.stockList) {
+		for (Stock stock : this.stockList) {
 			JButton deleteBtn = new JButton("Delete");
 			deleteBtn.setOpaque(true);
 			deleteBtn.setBackground(Constants.redColor);
@@ -109,7 +109,7 @@ public class ViewStockPanel extends JScrollPane implements Observer {
 							"Warning", dialogButton);
 
 					if (dialogResult == JOptionPane.YES_OPTION) {
-						StockModel item = stockList.get(stockTable.getSelectedRow());
+						Stock item = stockList.get(stockTable.getSelectedRow());
 						stockDao.deleteStock(item.getId());
 						tableModel.setRowCount(0);
 						getDataToTable();

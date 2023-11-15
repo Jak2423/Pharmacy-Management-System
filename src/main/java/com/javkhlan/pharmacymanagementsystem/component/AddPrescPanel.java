@@ -23,7 +23,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.javkhlan.pharmacymanagementsystem.dao.PrescDao;
 import com.javkhlan.pharmacymanagementsystem.dao.PrescDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.PrescriptionModel;
+import com.javkhlan.pharmacymanagementsystem.model.Prescription;
 import com.javkhlan.pharmacymanagementsystem.util.Constants;
 import com.javkhlan.pharmacymanagementsystem.util.Observer;
 
@@ -231,7 +231,7 @@ public class AddPrescPanel extends JPanel implements Observer, ActionListener {
 				JOptionPane.showMessageDialog(null, "Please provide inputs for all field", "Missing fields",
 						JOptionPane.WARNING_MESSAGE);
 			} else {
-				PrescriptionModel newPresc = new PrescriptionModel(cusIdField.getText(), cusNameField.getText(),
+				Prescription newPresc = new Prescription(cusIdField.getText(), cusNameField.getText(),
 						Integer.parseInt(ageField.getText()), genderField.getText(), addrField.getText(),
 						drugField.getText(), phoneField.getText(), strengthField.getText(), doseField.getText(),
 						Integer.parseInt(medQuantityField.getText()));

@@ -1,10 +1,10 @@
 package com.javkhlan.pharmacymanagementsystem.model;
 
-public class CompanyModel {
+public class Company {
 	private String id;
 	private String name;
 
-	public CompanyModel(String id, String name) {
+	public Company(String id, String name) {
 		super();
 		this.id = id;
 		this.name = name;

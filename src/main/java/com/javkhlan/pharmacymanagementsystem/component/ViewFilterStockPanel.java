@@ -21,14 +21,14 @@ import javax.swing.border.LineBorder;
 
 import com.javkhlan.pharmacymanagementsystem.dao.StockDao;
 import com.javkhlan.pharmacymanagementsystem.dao.StockDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.StockModel;
+import com.javkhlan.pharmacymanagementsystem.model.Stock;
 import com.javkhlan.pharmacymanagementsystem.util.Observer;
 
 public class ViewFilterStockPanel extends JPanel implements Observer, ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private StockDao stockDao;
-	private ArrayList<StockModel> stockList;
+	private ArrayList<Stock> stockList;
 	private ViewStockPanel stockDataPanel;
 	private JPanel searchPanel;
 	private JTextField searchField;

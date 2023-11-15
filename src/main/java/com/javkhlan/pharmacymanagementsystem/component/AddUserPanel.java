@@ -21,7 +21,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.javkhlan.pharmacymanagementsystem.dao.UserDao;
 import com.javkhlan.pharmacymanagementsystem.dao.UserDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.UserModel;
+import com.javkhlan.pharmacymanagementsystem.model.User;
 import com.javkhlan.pharmacymanagementsystem.util.Constants;
 import com.javkhlan.pharmacymanagementsystem.util.Observer;
 
@@ -195,7 +195,7 @@ public class AddUserPanel extends JPanel implements Observer, ActionListener {
 				JOptionPane.showMessageDialog(null, "Please provide inputs for all field", "Missing fields",
 						JOptionPane.WARNING_MESSAGE);
 			} else {
-				UserModel newUser = new UserModel(sId, currentRole, fname, lname, address, phone, email, username,
+				User newUser = new User(sId, currentRole, fname, lname, address, phone, email, username,
 						password);
 				userDao.insertUser(newUser, currentRole);
 				clearFields();

@@ -4,19 +4,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.javkhlan.pharmacymanagementsystem.model.StockModel;
+import com.javkhlan.pharmacymanagementsystem.model.Stock;
 import com.javkhlan.pharmacymanagementsystem.util.DBConnection;
 
 public class StockDaoImpl implements StockDao {
 	@Override
-	public ArrayList<StockModel> getStocks() {
-		ArrayList<StockModel> stockList = new ArrayList<>();
+	public ArrayList<Stock> getStocks() {
+		ArrayList<Stock> stockList = new ArrayList<>();
 		ResultSet res = null;
 		try {
 			res = DBConnection.getInstance().dbExecuteQuery("select * from Stocks");
 
 			while (res.next()) {
-				StockModel stock = new StockModel(res.getInt("id"), res.getString("name"), res.getString("category"),
+				Stock stock = new Stock(res.getInt("id"), res.getString("name"), res.getString("category"),
 						res.getString("description"), res.getString("company"), res.getString("supplier"),
 						res.getString("status"), String.valueOf(res.getTimestamp("date")), res.getInt("quantity"),
 						res.getDouble("unitCost"));
@@ -29,15 +29,15 @@ public class StockDaoImpl implements StockDao {
 	}
 
 	@Override
-	public ArrayList<StockModel> getMinCostStock() {
-		ArrayList<StockModel> stockList = new ArrayList<>();
+	public ArrayList<Stock> getMinCostStock() {
+		ArrayList<Stock> stockList = new ArrayList<>();
 		ResultSet res = null;
 		try {
 			res = DBConnection.getInstance()
 					.dbExecuteQuery("SELECT * FROM Stocks\n" + "WHERE unitCost = (SELECT MIN(unitCost) FROM Stocks)");
 
 			while (res.next()) {
-				StockModel stock = new StockModel(res.getInt("id"), res.getString("name"), res.getString("category"),
+				Stock stock = new Stock(res.getInt("id"), res.getString("name"), res.getString("category"),
 						res.getString("description"), res.getString("company"), res.getString("supplier"),
 						res.getString("status"), String.valueOf(res.getTimestamp("date")), res.getInt("quantity"),
 						res.getDouble("unitCost"));
@@ -50,15 +50,15 @@ public class StockDaoImpl implements StockDao {
 	}
 
 	@Override
-	public ArrayList<StockModel> getMaxCostStock() {
-		ArrayList<StockModel> stockList = new ArrayList<>();
+	public ArrayList<Stock> getMaxCostStock() {
+		ArrayList<Stock> stockList = new ArrayList<>();
 		ResultSet res = null;
 		try {
 			res = DBConnection.getInstance()
 					.dbExecuteQuery("SELECT * FROM Stocks\n" + "WHERE unitCost = (SELECT MAX(unitCost) FROM Stocks)");
 
 			while (res.next()) {
-				StockModel stock = new StockModel(res.getInt("id"), res.getString("name"), res.getString("category"),
+				Stock stock = new Stock(res.getInt("id"), res.getString("name"), res.getString("category"),
 						res.getString("description"), res.getString("company"), res.getString("supplier"),
 						res.getString("status"), String.valueOf(res.getTimestamp("date")), res.getInt("quantity"),
 						res.getDouble("unitCost"));
@@ -71,15 +71,15 @@ public class StockDaoImpl implements StockDao {
 	}
 
 	@Override
-	public ArrayList<StockModel> getStockByName(String name) {
-		ArrayList<StockModel> stockList = new ArrayList<>();
+	public ArrayList<Stock> getStockByName(String name) {
+		ArrayList<Stock> stockList = new ArrayList<>();
 		ResultSet res = null;
 		try {
 			res = DBConnection.getInstance()
 					.dbExecuteQuery("SELECT * FROM Stocks\n" + "WHERE name Like '%" + name + "%';");
 
 			while (res.next()) {
-				StockModel stock = new StockModel(res.getInt("id"), res.getString("name"), res.getString("category"),
+				Stock stock = new Stock(res.getInt("id"), res.getString("name"), res.getString("category"),
 						res.getString("description"), res.getString("company"), res.getString("supplier"),
 						res.getString("status"), String.valueOf(res.getTimestamp("date")), res.getInt("quantity"),
 						res.getDouble("unitCost"));
@@ -92,7 +92,7 @@ public class StockDaoImpl implements StockDao {
 	}
 
 	@Override
-	public void insertStock(StockModel stock) {
+	public void insertStock(Stock stock) {
 		String query = "INSERT INTO Stocks(name, category, description, "
 				+ "company, supplier, quantity, unitCost, status, date) VALUES " + "('" + stock.getName() + "', '"
 				+ stock.getCategory() + "', '" + stock.getDescription() + "', '" + stock.getCompany() + "', " + "'"

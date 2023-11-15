@@ -7,7 +7,7 @@ import com.javkhlan.pharmacymanagementsystem.state.AvailableState;
 import com.javkhlan.pharmacymanagementsystem.state.StockState;
 import com.javkhlan.pharmacymanagementsystem.state.UnavailableState;
 
-public class StockModel {
+public class Stock {
 	private int id;
 	private String name;
 	private String category;
@@ -21,7 +21,7 @@ public class StockModel {
 
 	private StockState state;
 
-	public StockModel(int id, String name, String category, String description, String company, String supplier,
+	public Stock(int id, String name, String category, String description, String company, String supplier,
 			String status, String date, int quantity, double unitCost) {
 		this.id = id;
 		this.name = name;
@@ -35,7 +35,7 @@ public class StockModel {
 		this.date = date;
 	}
 
-	public StockModel(String name, String category, String description, String company, String supplier, int quantity,
+	public Stock(String name, String category, String description, String company, String supplier, int quantity,
 			double unitCost) {
 		this.name = name;
 		this.category = category;

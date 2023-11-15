@@ -1,11 +1,11 @@
 package com.javkhlan.pharmacymanagementsystem.state;
 
-import com.javkhlan.pharmacymanagementsystem.model.StockModel;
+import com.javkhlan.pharmacymanagementsystem.model.Stock;
 
 public abstract class StockState {
-	StockModel stock;
+	Stock stock;
 
-	StockState(StockModel stock) {
+	StockState(Stock stock) {
 		this.stock = stock;
 	}
 

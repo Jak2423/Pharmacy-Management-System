@@ -2,12 +2,12 @@ package com.javkhlan.pharmacymanagementsystem.dao;
 
 import java.util.ArrayList;
 
-import com.javkhlan.pharmacymanagementsystem.model.PrescriptionModel;
+import com.javkhlan.pharmacymanagementsystem.model.Prescription;
 
 public interface PrescDao {
-	public ArrayList<PrescriptionModel> getPrescriptions();
+	public ArrayList<Prescription> getPrescriptions();
 
-	public void insertPrescription(PrescriptionModel pres);
+	public void insertPrescription(Prescription pres);
 
 	public void deletePrescription(int id);
 }

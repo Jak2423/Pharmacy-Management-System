@@ -1,9 +1,9 @@
 package com.javkhlan.pharmacymanagementsystem.state;
 
-import com.javkhlan.pharmacymanagementsystem.model.StockModel;
+import com.javkhlan.pharmacymanagementsystem.model.Stock;
 
 public class AvailableState extends StockState {
-	public AvailableState(StockModel stock) {
+	public AvailableState(Stock stock) {
 		super(stock);
 	}
 

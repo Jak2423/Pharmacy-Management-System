@@ -34,7 +34,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.javkhlan.pharmacymanagementsystem.dao.UserDao;
 import com.javkhlan.pharmacymanagementsystem.dao.UserDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.UserModel;
+import com.javkhlan.pharmacymanagementsystem.model.User;
 import com.javkhlan.pharmacymanagementsystem.util.Constants;
 import com.javkhlan.pharmacymanagementsystem.util.DBConnection;
 import com.javkhlan.pharmacymanagementsystem.util.UserSession;
@@ -147,13 +147,13 @@ public class LoginFrame extends JFrame implements ActionListener, FocusListener 
 	public boolean userLogin(String username, String password) {
 
 		ResultSet res = null;
-		UserModel user = null;
+		User user = null;
 		try {
 			res = DBConnection.getInstance()
 					.dbExecuteQuery("select * from Users where " + "username" + " = '" + username + "';");
 
 			if (res.next()) {
-				user = new UserModel(res.getInt("id"), res.getString("staffId"), res.getString("role"),
+				user = new User(res.getInt("id"), res.getString("staffId"), res.getString("role"),
 						res.getString("firstName"), res.getString("lastName"), res.getString("address"),
 						res.getString("phone"), res.getString("email"), res.getString("username"),
 						res.getString("password"));
@@ -178,7 +178,7 @@ public class LoginFrame extends JFrame implements ActionListener, FocusListener 
 			usernameField.requestFocusInWindow();
 			passwordField.setText("");
 		} else {
-			UserModel user = userDao.getUserByUsername(username);
+			User user = userDao.getUserByUsername(username);
 
 			if (user != null && user.getPassword().equals(password)) {
 				UserSession.setUserId(user.getId());

@@ -4,21 +4,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.javkhlan.pharmacymanagementsystem.model.PrescriptionModel;
+import com.javkhlan.pharmacymanagementsystem.model.Prescription;
 import com.javkhlan.pharmacymanagementsystem.util.DBConnection;
 
 public class PrescDaoImpl implements PrescDao {
 
 	@Override
-	public ArrayList<PrescriptionModel> getPrescriptions() {
-		ArrayList<PrescriptionModel> presList = new ArrayList<>();
+	public ArrayList<Prescription> getPrescriptions() {
+		ArrayList<Prescription> presList = new ArrayList<>();
 
 		ResultSet res = null;
 		try {
 			res = DBConnection.getInstance().dbExecuteQuery("select * from " + "Prescriptions");
 
 			while (res.next()) {
-				PrescriptionModel prescription = new PrescriptionModel(res.getInt("PresNo"), res.getString("InvoiceNo"),
+				Prescription prescription = new Prescription(res.getInt("PresNo"), res.getString("InvoiceNo"),
 						res.getString("CustomerId"), res.getString("customerName"), res.getInt("age"),
 						res.getString("gender"), res.getString("address"), String.valueOf(res.getTimestamp("date")),
 						res.getString("drug"), res.getString("phone"), res.getString("strength"), res.getString("dose"),
@@ -34,7 +34,7 @@ public class PrescDaoImpl implements PrescDao {
 	}
 
 	@Override
-	public void insertPrescription(PrescriptionModel pres) {
+	public void insertPrescription(Prescription pres) {
 		String query = "INSERT INTO Prescriptions(InvoiceNo, " + "CustomerId," + " " + "customerName, age, "
 				+ "gender, address, drug, phone, " + "strength, dose, quantity, date)" + "VALUES ('"
 				+ pres.getInvoiceNo() + "', '" + pres.getCustomerID() + "', '" + pres.getCustomerName() + "', "

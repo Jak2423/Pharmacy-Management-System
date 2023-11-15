@@ -1,13 +1,13 @@
 package com.javkhlan.pharmacymanagementsystem.model;
 
-public class PaymentModel {
+public class Payment {
 	private int paymentID;
 	private String invoiceNo;
 	private double amount;
 	private String paymentMethod;
 	private String serialNo;
 
-	public PaymentModel(int paymentID, String invoiceNo, double amount, String paymentMethod, String serialNo) {
+	public Payment(int paymentID, String invoiceNo, double amount, String paymentMethod, String serialNo) {
 		this.paymentID = paymentID;
 		this.invoiceNo = invoiceNo;
 		this.amount = amount;
@@ -15,7 +15,7 @@ public class PaymentModel {
 		this.serialNo = serialNo;
 	}
 
-	public PaymentModel(String invoiceNo, double amount, String paymentMethod, String serialNo) {
+	public Payment(String invoiceNo, double amount, String paymentMethod, String serialNo) {
 		this.invoiceNo = invoiceNo;
 		this.amount = amount;
 		this.paymentMethod = paymentMethod;

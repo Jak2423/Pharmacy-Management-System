@@ -22,7 +22,7 @@ import javax.swing.border.EmptyBorder;
 
 import com.javkhlan.pharmacymanagementsystem.dao.UserDao;
 import com.javkhlan.pharmacymanagementsystem.dao.UserDaoImpl;
-import com.javkhlan.pharmacymanagementsystem.model.UserModel;
+import com.javkhlan.pharmacymanagementsystem.model.User;
 import com.javkhlan.pharmacymanagementsystem.util.Constants;
 import com.javkhlan.pharmacymanagementsystem.util.Observer;
 
@@ -36,10 +36,10 @@ public class EditUserFrame extends JFrame implements Observer, ActionListener {
 			passwordLabel;
 	private JButton submitButton;
 	private UserDao userDao;
-	private UserModel user;
+	private User user;
 	private Observer userView;
 
-	public EditUserFrame(UserModel user, Observer userView) {
+	public EditUserFrame(User user, Observer userView) {
 		super("Edit user");
 		this.user = user;
 		this.userView = userView;
@@ -212,7 +212,7 @@ public class EditUserFrame extends JFrame implements Observer, ActionListener {
 						"Warning", dialogButton);
 
 				if (dialogResult == JOptionPane.YES_OPTION) {
-					UserModel newUser = new UserModel(sId, user.getRole(), fname, lname, address, phone, email,
+					User newUser = new User(sId, user.getRole(), fname, lname, address, phone, email,
 							username, password);
 					userDao.updateUser(newUser, this.user.getId());
 

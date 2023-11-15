@@ -2,21 +2,21 @@ package com.javkhlan.pharmacymanagementsystem.dao;
 
 import java.util.ArrayList;
 
-import com.javkhlan.pharmacymanagementsystem.model.UserModel;
+import com.javkhlan.pharmacymanagementsystem.model.User;
 
 public interface UserDao {
 
-	public ArrayList<UserModel> getUsers();
+	public ArrayList<User> getUsers();
 
-	public ArrayList<UserModel> getUserByRole(String role);
+	public ArrayList<User> getUserByRole(String role);
 
-	public ArrayList<UserModel> getUserByAddress(String addr);
+	public ArrayList<User> getUserByAddress(String addr);
 
-	public UserModel getUserByUsername(String username);
+	public User getUserByUsername(String username);
 
-	public void updateUser(UserModel user, int updateUserId);
+	public void updateUser(User user, int updateUserId);
 
-	public void insertUser(UserModel user, String currentRole);
+	public void insertUser(User user, String currentRole);
 
 	public void deleteUser(int id);
 }
